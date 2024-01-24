@@ -9,6 +9,8 @@ This package mimics the `aws ecs run-task` aws-cli command and awaits it's execu
 
 Made for personal use, but if it suites your needs you are welcome to use it.
 
+There is also a [Github Action](https://github.com/marketplace/actions/aws-ecs-standalone-task) available.
+
 ## Installation
 
 Install it locally in your project folder:
