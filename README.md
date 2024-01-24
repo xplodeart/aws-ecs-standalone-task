@@ -1,6 +1,7 @@
 # aws-ecs-standalone-task
 
 [![NPM Version](https://img.shields.io/npm/v/aws-ecs-standalone-task)](https://www.npmjs.com/package/aws-ecs-standalone-task)
+[![NPM Types](https://badgen.net/npm/types/aws-ecs-standalone-task)](https://www.npmjs.com/package/aws-ecs-standalone-task)
 
 Start an ECS Standalone task, wait for it to complete and get it's logs from CloudWatch.
 
@@ -54,8 +55,8 @@ const awsConfig = {
 const ecs = new EcsTaskManager(awsConfig, {
   cluster: "ClusterName", // ECS Cluster Name
   taskDefinition: "my-standalone-task-definition", // ECS Task Definition Name
-  securityGroups: ["sg-*****************"], // List of security group names for your Task's networkConfiguration.awsvpcConfiguration
-  subnets: ["subnet-*****************"], // Subnet name for your Task's networkConfiguration.awsvpcConfiguration
+  securityGroups: ["sg-*****************"], // List of security group IDs for your Task's networkConfiguration.awsvpcConfiguration
+  subnets: ["subnet-*****************"], // List of Subnet IDs for your Task's networkConfiguration.awsvpcConfiguration
 });
 
 // Optional, if your Task logs to CLoudWatch, you need the log reader to check it's logs once it completes
