@@ -1,5 +1,7 @@
 # aws-ecs-standalone-task
 
+[![NPM Version](https://img.shields.io/npm/v/aws-ecs-standalone-task)](https://www.npmjs.com/package/aws-ecs-standalone-task)
+
 Start an ECS Standalone task, wait for it to complete and get it's logs from CloudWatch.
 
 This package mimics the `aws ecs run-task` aws-cli command and awaits it's execution.
