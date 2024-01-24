@@ -1,8 +1,4 @@
-import {
-  CloudWatchLogsClient,
-  GetLogEventsCommand,
-  GetLogEventsCommandInput,
-} from "@aws-sdk/client-cloudwatch-logs";
+import { CloudWatchLogsClient, GetLogEventsCommand, GetLogEventsCommandInput } from "@aws-sdk/client-cloudwatch-logs";
 
 import type { AwsConfig, CloudLogResources, Message, LogResult } from "./types";
 
@@ -44,7 +40,7 @@ class CloudLogReader {
       return messages;
     }
 
-    for (let event of response.events) {
+    for (const event of response.events) {
       if (event.message) {
         messages.push(event.message);
       }
@@ -54,7 +50,7 @@ class CloudLogReader {
   }
 
   hasErrors(messages: Message[]): boolean {
-    for (let message of messages) {
+    for (const message of messages) {
       if (message.toLowerCase().includes("err")) {
         return true;
       }

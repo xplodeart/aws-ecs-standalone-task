@@ -1,9 +1,4 @@
-import {
-  ECSClient,
-  RunTaskCommand,
-  RunTaskCommandInput,
-  DescribeTasksCommand,
-} from "@aws-sdk/client-ecs";
+import { ECSClient, RunTaskCommand, RunTaskCommandInput, DescribeTasksCommand } from "@aws-sdk/client-ecs";
 
 import type { AwsConfig, EcsResources } from "./types";
 
@@ -18,10 +13,7 @@ class EcsTaskManager {
     this.ecsResources = resources;
   }
 
-  async dispatchAndWait(
-    checkInterval: number = 6000,
-    iterations: number = 20
-  ): Promise<string> {
+  async dispatchAndWait(checkInterval: number = 6000, iterations: number = 20): Promise<string> {
     const taskId = await this.dispatchTask();
 
     if (taskId === null) {
@@ -74,11 +66,7 @@ class EcsTaskManager {
     return taskId;
   }
 
-  waitForTaskComplete(
-    taskId: string,
-    checkInterval: number = 6000,
-    numIterations: number = 20
-  ): Promise<boolean> {
+  waitForTaskComplete(taskId: string, checkInterval: number = 6000, numIterations: number = 20): Promise<boolean> {
     return new Promise((resolve, reject) => {
       let iterations = numIterations;
 
