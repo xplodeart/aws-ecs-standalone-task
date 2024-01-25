@@ -84,6 +84,8 @@ class EcsTaskManager {
         }
 
         if (iterations === 0) {
+          clearInterval(interval);
+
           resolve(false);
         }
       }, checkInterval);
