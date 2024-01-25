@@ -80,10 +80,10 @@ async function runTask() {
   const taskId = await ecs.dispatchTask();
 
   // then, optionally wait for it to complete
-  try {
-    await this.waitForTaskComplete(taskId); // optional: interval and iterations
-  } catch (err) {
-    console.error(err);
+  const taskComplete = await this.waitForTaskComplete(taskId); // optional: interval and iterations
+
+  if (!taskComplete) {
+    throw new Error("Task completion timeout");
   }
 
   // fetch and parse the logs

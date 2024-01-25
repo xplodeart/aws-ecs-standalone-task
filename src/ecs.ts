@@ -22,7 +22,11 @@ class EcsTaskManager {
 
     //console.log("Dispatched task", taskId);
 
-    await this.waitForTaskComplete(taskId, checkInterval, iterations);
+    const complete = await this.waitForTaskComplete(taskId, checkInterval, iterations);
+
+    if (!complete) {
+      throw new Error("Task completion timeout");
+    }
 
     //console.log("Completed task", taskId);
 
@@ -67,7 +71,7 @@ class EcsTaskManager {
   }
 
   waitForTaskComplete(taskId: string, checkInterval: number = 6000, numIterations: number = 20): Promise<boolean> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let iterations = numIterations;
 
       const interval = setInterval(async () => {
@@ -80,7 +84,7 @@ class EcsTaskManager {
         }
 
         if (iterations === 0) {
-          reject("Timeout error, 2 minutes");
+          resolve(false);
         }
       }, checkInterval);
     });
